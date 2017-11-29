@@ -1,0 +1,9 @@
+# setup
+language: node_js
+node_js:
+  - "6"
+  - "8"
+
+# running tests
+script:
+  npm test

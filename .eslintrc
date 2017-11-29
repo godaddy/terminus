@@ -1,0 +1,10 @@
+{
+  "extends": "godaddy",
+  "rules": {
+    "strict": 0,
+    "no-shadow": 0
+  },
+  "parserOptions": {
+    "ecmaVersion": 2017
+  }
+}
