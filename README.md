@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/godaddy/terminus.svg?branch=master)](https://travis-ci.org/godaddy/terminus)
+
 # terminus
 
 Adds graceful shutdown and Kubernetes readiness / liveness checks for any HTTP applications.
