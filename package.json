@@ -7,7 +7,7 @@
     "test": "mocha lib/**/*.spec.js",
     "eslint": "eslint-godaddy -c .eslintrc lib example index.js",
     "coverage": "nyc mocha lib/**/*.spec.js",
-    "publish": "npm run lint && npm run test"
+    "publish": "npm run eslint && npm test"
   },
   "repository": {
     "type": "git",
