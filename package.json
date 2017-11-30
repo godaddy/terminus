@@ -17,6 +17,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "es6-promisify": "^5.0.0",
     "stoppable": "^1.0.4"
   },
   "devDependencies": {
