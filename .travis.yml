@@ -1,9 +1,15 @@
-# setup
 language: node_js
+cache:
+  directories:
+    - ~/.npm
+notifications:
+  email: false
 node_js:
-  - "6"
-  - "8"
-
-# running tests
-script:
-  npm test
+  - '9'
+  - '8'
+  - '6'
+after_success:
+  - npm run semantic-release
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/

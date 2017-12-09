@@ -7,11 +7,12 @@
     "test": "mocha lib/**/*.spec.js",
     "eslint": "eslint-godaddy -c .eslintrc lib example index.js",
     "coverage": "nyc mocha lib/**/*.spec.js",
-    "publish": "npm run eslint && npm test"
+    "publish": "npm run eslint && npm test",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:godaddy/terminus.git"
+    "url": "https://github.com/godaddy/terminus.git"
   },
   "keywords": [],
   "author": "",
@@ -30,6 +31,7 @@
     "mocha": "^4.0.1",
     "node-fetch": "^1.7.3",
     "nyc": "^11.3.0",
-    "supertest": "^3.0.0"
+    "supertest": "^3.0.0",
+    "semantic-release": "^8.2.0"
   }
 }
