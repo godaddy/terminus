@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "typings": "./typings/index.d.ts",
   "scripts": {
-    "test": "mocha lib/**/*.spec.js",
+    "test-typings": "tsc --lib ES2015 --noEmit typings/*.ts",
+    "test": "mocha lib/**/*.spec.js && npm run test-typings",
     "eslint": "eslint-godaddy -c .eslintrc lib example index.js",
     "coverage": "nyc mocha lib/**/*.spec.js",
     "publish": "npm run eslint && npm test",
@@ -22,6 +24,9 @@
     "stoppable": "^1.0.4"
   },
   "devDependencies": {
+    "@types/express": "^4.0.39",
+    "@types/koa": "^2.0.42",
+    "@types/node": "^8.0.58",
     "chai": "^4.1.2",
     "eslint": "^4.4.1",
     "eslint-config-godaddy": "^2.0.0",
@@ -31,7 +36,8 @@
     "mocha": "^4.0.1",
     "node-fetch": "^1.7.3",
     "nyc": "^11.3.0",
+    "semantic-release": "^8.2.0",
     "supertest": "^3.0.0",
-    "semantic-release": "^8.2.0"
+    "typescript": "^2.6.2"
   }
 }
