@@ -28,12 +28,12 @@ const server = http.createServer((request, response) => {
 terminus(server, {
   // healtcheck options
   healthChecks: {
-    '/healthcheck': check          // a promise indicating service health
+    '/healthcheck': check          // a promise returning function indicating service health
   },
 
   // cleanup options
   timeout: 1000,                   // [optional = 5000] number of milliseconds before forcefull exiting
-  onSigterm,                       // [optional] clenaup function, returning a promise
+  onSigterm,                       // [optional] cleanup function, returning a promise
   onShutdown,                      // [optional] called right before exiting
 
   // both
@@ -56,7 +56,7 @@ app.get('/', (req, res) => {
 const server = http.createServer(app);
 
 terminus(server, {
-  //opts
+  // opts
 });
 
 server.listen(3000);
