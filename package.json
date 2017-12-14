@@ -16,7 +16,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "es6-promisify": "^5.0.0",
     "stoppable": "^1.0.4"
