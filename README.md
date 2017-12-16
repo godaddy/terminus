@@ -34,8 +34,7 @@ terminus(server, {
   // cleanup options
   timeout: 1000,                   // [optional = 5000] number of milliseconds before forcefull exiting
   useSigint,                       // tells terminus to use SIGINT instead of SIGTERM (works with PM2)
-  onSigterm,                       // [optional] cleanup function when listening for SIGTERM, returning a promise
-  onSigint,                        // [optional] cleanup function when listening for SIGINT, returning a promise
+  onKillSignal,                    // [optional] cleanup function when listening for SIGTERM, returning a promise
   onShutdown,                      // [optional] called right before exiting
 
   // both
