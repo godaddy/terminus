@@ -9,10 +9,12 @@ app.get("/", (req, res) => res.send("ok"));
 const server = http.createServer(app);
   
 function onHealthCheck() {
-    return Promise.resolve();
+  return Promise.resolve();
 }
 
 const x = terminus(http.createServer(app), {
-    logger: console.log,
-    onHealthCheck
+  logger: console.log,
+  healthChecks: {
+    "/healthcheck": () => Promise.resolve()
+  }
 }).listen(3000);

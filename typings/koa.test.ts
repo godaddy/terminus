@@ -12,7 +12,9 @@ function onHealthCheck() {
 
 terminus(server, {
   logger: console.log,
-  onHealthCheck
+  healthChecks: {
+    "/healthcheck": () => Promise.resolve()
+  }
 });
 
 server.listen(3000);
