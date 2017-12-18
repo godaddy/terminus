@@ -33,8 +33,8 @@ terminus(server, {
 
   // cleanup options
   timeout: 1000,                   // [optional = 5000] number of milliseconds before forcefull exiting
-  signal,                          // [optional = 'SIGTERM'] what signal to listen for relative to shutdown
-  onKillSignal,                    // [optional] cleanup function, returning a promise
+  killSignal,                      // [optional = 'SIGTERM'] what signal to listen for relative to shutdown
+  onKillSignal,                    // [optional] cleanup function, returning a promise (used to be onSigterm)
   onShutdown,                      // [optional] called right before exiting
 
   // both
