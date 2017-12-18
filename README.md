@@ -33,7 +33,7 @@ terminus(server, {
 
   // cleanup options
   timeout: 1000,                   // [optional = 5000] number of milliseconds before forcefull exiting
-  useSigint,                       // tells terminus to use SIGINT instead of SIGTERM (works with PM2)
+  signal,                          // [optional = 'SIGTERM'] what signal to listen for relative to shutdown
   onKillSignal,                    // [optional] cleanup function, returning a promise
   onShutdown,                      // [optional] called right before exiting
 
