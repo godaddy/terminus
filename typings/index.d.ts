@@ -9,9 +9,13 @@ declare module "@godaddy/terminus" {
   interface TerminusOptions {
     healthChecks?: HealthCheckMap;
     timeout?: number;
-    onSigterm?: () => Promise<any>;
+    signal?: string;
+    onSignal?: () => Promise<any>;
     onShutdown?: () => Promise<any>;
     logger?: (msg: string, err: Error) => void;
+
+    /** Deprecated. */
+    onSigterm?: () => Promise<any>;
   }
 
   type Terminus = <T>(server: T, options?: TerminusOptions) => T;
