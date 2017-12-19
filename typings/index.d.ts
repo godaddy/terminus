@@ -9,8 +9,8 @@ declare module "@godaddy/terminus" {
   interface TerminusOptions {
     healthChecks?: HealthCheckMap;
     timeout?: number;
-    killSignal?: string;
-    onKillSignal?: () => Promise<any>;
+    signal?: string;
+    onSignal?: () => Promise<any>;
     onShutdown?: () => Promise<any>;
     logger?: (msg: string, err: Error) => void;
 

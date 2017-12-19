@@ -1,7 +1,7 @@
 import * as http from "http";
 import * as terminus from "@godaddy/terminus";
 
-async function onKillSignal () {
+async function onSignal () {
   console.log('server is starting cleanup');
   return Promise.all([
     // your clean logic, like closing database connections
@@ -22,7 +22,7 @@ terminus(server, {
     "/healthcheck": () => Promise.resolve()
   },
   timeout: 1000,
-  onKillSignal,
+  onSignal,
   onShutdown,
   logger: console.log
 });
