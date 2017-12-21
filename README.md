@@ -10,7 +10,7 @@ Adds graceful shutdown and Kubernetes readiness / liveness checks for any HTTP a
 const http = require('http');
 const terminus = require('@godaddy/terminus');
 
-function onSigterm () {
+function onSignal () {
   console.log('server is starting cleanup');
   return Promise.all([
     // your clean logic, like closing database connections
