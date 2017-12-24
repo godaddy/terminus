@@ -38,7 +38,7 @@ terminus(server, {
   onShutdown,                      // [optional] called right before exiting
 
   // both
-  logger                           // [optional] logger function to be called with errors    
+  logger                           // [optional] logger function to be called with errors
 });
 
 server.listen(PORT);
@@ -78,3 +78,11 @@ terminus(server, {
 
 server.listen(3000);
 ```
+
+## Windows support
+
+Due to inherent platform limitations, `terminus` has limited support for Windows.
+You can expect `SIGINT` to work, as well as `SIGBREAK` and to some extent `SIGHUP`.
+However `SIGTERM` will never work on Windows because killing a process in the task manager is unconditional, i.e., there's no way for an application to detect or prevent it.
+Here's some relevant documentation from [`libuv`](https://github.com/libuv/libuv) to learn more about what `SIGINT`, `SIGBREAK` etc. signify and what's supported on Windows - http://docs.libuv.org/en/v1.x/signal.html.
+Also see https://nodejs.org/api/process.html#process_signal_events.
