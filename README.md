@@ -79,7 +79,7 @@ terminus(server, {
 server.listen(3000);
 ```
 
-## Windows support
+## Limited Windows support
 
 Due to inherent platform limitations, `terminus` has limited support for Windows.
 You can expect `SIGINT` to work, as well as `SIGBREAK` and to some extent `SIGHUP`.
