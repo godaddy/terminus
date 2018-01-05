@@ -8,6 +8,11 @@ node_js:
   - '9'
   - '8'
   - '6'
+before_install:
+- npm install -g greenkeeper-lockfile@1
+before_script: greenkeeper-lockfile-update
+after_script: greenkeeper-lockfile-upload
+
 after_success:
   - npm run semantic-release
 branches:
