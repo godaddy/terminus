@@ -2,6 +2,8 @@
 
 # terminus
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/godaddy/terminus.svg)](https://greenkeeper.io/)
+
 Adds graceful shutdown and Kubernetes readiness / liveness checks for any HTTP applications.
 
 ## Usage
