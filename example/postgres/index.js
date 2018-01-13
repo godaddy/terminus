@@ -24,10 +24,6 @@ function onSignal() {
     .catch(err => console.error('error during disconnection', err.stack));
 }
 
-process.on('exit', (code) => {
-  console.log(`About to exit with code: ${code}`);
-});
-
 async function startServer() {
   await client.connect();
   console.log('db connected');
