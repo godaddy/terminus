@@ -36,7 +36,7 @@
     "mocha": "^4.0.1",
     "node-fetch": "^1.7.3",
     "nyc": "^11.3.0",
-    "semantic-release": "^11.0.2",
+    "semantic-release": "^12.2.2",
     "supertest": "^3.0.0",
     "typescript": "^2.6.2"
   }
