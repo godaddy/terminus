@@ -18,6 +18,10 @@ function onHealthCheck() {
   return Promise.resolve();
 }
 
+async function onDbHealthCheck() {
+    return client.query('SELECT 1');
+}
+
 function onSignal() {
   console.log('server is starting cleanup');
   return client.end().then(() => console.log('client has disconnected'))
@@ -32,7 +36,8 @@ async function startServer() {
     logger: console.log,
     signal: 'SIGINT',
     healthChecks: {
-      '/healthcheck': onHealthCheck
+      '/healthcheck': onHealthCheck,
+      '/dbhealthcheck': onDbHealthCheck
     },
 
     onSignal
