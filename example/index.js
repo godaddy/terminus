@@ -9,11 +9,9 @@ app.get('/', (req, res) => {
   }, 100000);
 });
 
-function onHealthCheck() {
-  return Promise.resolve();
-}
-
 terminus(http.createServer(app), {
   logger: console.log,
-  onHealthCheck
+  healthChecks: {
+    '/healthz': () => Promise.resolve()
+  }
 }).listen(3000);
