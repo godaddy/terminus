@@ -14,11 +14,7 @@ app.get('/', async (req, res) => {
   res.send(result.rows[0].message);
 });
 
-function onHealthCheck() {
-  return Promise.resolve();
-}
-
-async function onDbHealthCheck() {
+async function onHealthCheck() {
     return client.query('SELECT 1');
 }
 
@@ -37,7 +33,6 @@ async function startServer() {
     signal: 'SIGINT',
     healthChecks: {
       '/healthcheck': onHealthCheck,
-      '/dbhealthcheck': onDbHealthCheck
     },
 
     onSignal
