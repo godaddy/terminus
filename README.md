@@ -6,6 +6,14 @@
 
 Adds graceful shutdown and Kubernetes readiness / liveness checks for any HTTP applications.
 
+## Installation
+
+Install via npm:
+
+```console
+$ npm i @godaddy/terminus --save
+```
+
 ## Usage
 
 ```javascript
