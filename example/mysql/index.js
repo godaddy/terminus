@@ -11,7 +11,9 @@ const db = mysql.createConnection({
 
 app.get('/', (req, res) => {
   db.query('SELECT 1 + 1 AS solution', (err, results) => {
-    if (err) throw err;
+    if (err) {
+      return res.sendStatus(500);
+    }
     res.send(`Solution = ${results[0].solution}`);
   });
 });
