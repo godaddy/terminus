@@ -35,7 +35,7 @@ const server = http.createServer((request, response) => {
   response.end('<html><body><h1>Hello, World!</h1></body></html>');
 })
 
-terminus(server, {
+const options = {
   // healtcheck options
   healthChecks: {
     '/healthcheck': check          // a promise returning function indicating service health
@@ -49,9 +49,11 @@ terminus(server, {
 
   // both
   logger                           // [optional] logger function to be called with errors
-});
+};
 
-server.listen(PORT);
+terminus(server, options);
+
+server.listen(PORT || 3000);
 ```
 
 ### With express
@@ -66,11 +68,13 @@ app.get('/', (req, res) => {
 
 const server = http.createServer(app);
 
-terminus(server, {
+const options = {
   // opts
-});
+};
 
-server.listen(3000);
+terminus(server, options);
+
+server.listen(PORT || 3000);
 ```
 
 ### With koa
@@ -82,11 +86,13 @@ const app = new Koa();
 
 const server = http.createServer(app.callback());
 
-terminus(server, {
-  //opts
-});
+const options = {
+  // opts
+};
 
-server.listen(3000);
+terminus(server, options);
+
+server.listen(PORT || 3000);
 ```
 
 ## Limited Windows support
