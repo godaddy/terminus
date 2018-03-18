@@ -32,7 +32,13 @@ function onShutdown () {
 }
 
 const server = http.createServer((request, response) => {
-  response.end('<html><body><h1>Hello, World!</h1></body></html>');
+  response.end(
+    `<html>
+      <body>
+        <h1>Hello, World!</h1>
+       </body>
+     </html>`
+   );
 })
 
 terminus(server, {
