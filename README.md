@@ -48,7 +48,7 @@ const options = {
   },
 
   // cleanup options
-  timeout: 1000,                   // [optional = 5000] number of milliseconds before forcefull exiting
+  timeout: 1000,                   // [optional = 1000] number of milliseconds before forcefull exiting
   signal,                          // [optional = 'SIGTERM'] what signal to listen for relative to shutdown
   onSignal,                        // [optional] cleanup function, returning a promise (used to be onSigterm)
   onShutdown,                      // [optional] called right before exiting
