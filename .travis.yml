@@ -15,7 +15,7 @@ before_script: greenkeeper-lockfile-update
 after_script: greenkeeper-lockfile-upload
 
 after_success:
-  - nvm use 8 && npm run semantic-release
+  - nvm use 8 && npm run travis-deploy-once "npm run semantic-release"
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
