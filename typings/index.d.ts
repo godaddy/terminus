@@ -10,6 +10,7 @@ declare module "@godaddy/terminus" {
     healthChecks?: HealthCheckMap;
     timeout?: number;
     signal?: string;
+    signals?: string[];
     onSignal?: () => Promise<any>;
     onShutdown?: () => Promise<any>;
     logger?: (msg: string, err: Error) => void;
