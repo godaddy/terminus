@@ -103,6 +103,32 @@ terminus(server, options);
 server.listen(PORT || 3000);
 ```
 
+## How to set Terminus up with Kubernetes?
+
+When a pod is deleted, Kubernetes will notify it and will wait for `gracePeriod` seconds before killing it.
+
+During that time window (30 seconds by default), the pod is in the `terminating` state and will be removed from any Services by a controller. The pod itself needs to catch the `SIGTERM` signal, and start failing any readiness probes.
+
+During this time, it is possible that load-balancers don't remove the pods "in time", and when the pod dies, it kills live connections.
+
+To make sure you don't lose any connections, we recommend delaying the shutdown with the number of milliseconds that's defined by the readiness probe in your deployment configuration. To help with this, terminus exposes an option called `beforeShutdown` that takes any Promise-returning function.
+
+```javascript
+function beforeShutdown () {
+  // given your readiness probes run every 5 second
+  // may worth using a bigger number so you won't
+  // run into any race conditions
+  return Promise(resolve => {
+    setTimeout(5000, resolve)
+  })
+}
+terminus(server, {
+  beforeShutdown
+})
+```
+
+[Learn more](https://github.com/kubernetes/contrib/issues/1140#issuecomment-231641402)
+
 ## Limited Windows support
 
 Due to inherent platform limitations, `terminus` has limited support for Windows.
