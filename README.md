@@ -105,7 +105,7 @@ server.listen(PORT || 3000);
 
 ## How to set Terminus up with Kubernetes?
 
-When a Pod is deleted, Kubernetes will notify it and wait for `gracePeriod` seconds before killing it.
+When Kubernetes or a user deletes a Pod, Kubernetes will notify it and wait for `gracePeriod` seconds before killing it.
 
 During that time window (30 seconds by default), the Pod is in the `terminating` state and will be removed from any Services by a controller. The Pod itself needs to catch the `SIGTERM` signal and start failing any readiness probes.
 
