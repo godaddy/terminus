@@ -105,13 +105,13 @@ server.listen(PORT || 3000);
 
 ## How to set Terminus up with Kubernetes?
 
-When a pod is deleted, Kubernetes will notify it and wait for `gracePeriod` seconds before killing it.
+When a Pod is deleted, Kubernetes will notify it and wait for `gracePeriod` seconds before killing it.
 
-During that time window (30 seconds by default), the pod is in the `terminating` state and will be removed from any Services by a controller. The pod itself needs to catch the `SIGTERM` signal and start failing any readiness probes.
+During that time window (30 seconds by default), the Pod is in the `terminating` state and will be removed from any Services by a controller. The Pod itself needs to catch the `SIGTERM` signal and start failing any readiness probes.
 
-During this time, it is possible that load-balancers don't remove the pods "in time", and when the pod dies, it kills live connections. 
+> If the ingress controller you use route via the Service, it is not an issue for your case. At the time of this writing, we use the nginx ingress controller which routes traffic directly to the Pods.
 
-> If the ingress controller you use route via the Service, it is not an issue for your case. At the time of this writing, we use the nginx ingress controller which routes traffic directly to the pods.
+During this time, it is possible that load-balancers (like the nginx ingress controller) don't remove the Pods "in time", and when the Pod dies, it kills live connections.
 
 To make sure you don't lose any connections, we recommend delaying the shutdown with the number of milliseconds that's defined by the readiness probe in your deployment configuration. To help with this, terminus exposes an option called `beforeShutdown` that takes any Promise-returning function.
 
