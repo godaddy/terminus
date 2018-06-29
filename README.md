@@ -106,10 +106,38 @@ terminus(server, options);
 server.listen(PORT || 3000);
 ```
 
+## How to set Terminus up with Kubernetes?
+
+When Kubernetes or a user deletes a Pod, Kubernetes will notify it and wait for `gracePeriod` seconds before killing it.
+
+During that time window (30 seconds by default), the Pod is in the `terminating` state and will be removed from any Services by a controller. The Pod itself needs to catch the `SIGTERM` signal and start failing any readiness probes.
+
+> If the ingress controller you use route via the Service, it is not an issue for your case. At the time of this writing, we use the nginx ingress controller which routes traffic directly to the Pods.
+
+During this time, it is possible that load-balancers (like the nginx ingress controller) don't remove the Pods "in time", and when the Pod dies, it kills live connections.
+
+To make sure you don't lose any connections, we recommend delaying the shutdown with the number of milliseconds that's defined by the readiness probe in your deployment configuration. To help with this, terminus exposes an option called `beforeShutdown` that takes any Promise-returning function.
+
+```javascript
+function beforeShutdown () {
+  // given your readiness probes run every 5 second
+  // may be worth using a bigger number so you won't
+  // run into any race conditions
+  return Promise(resolve => {
+    setTimeout(resolve, 5000)
+  })
+}
+terminus(server, {
+  beforeShutdown
+})
+```
+
+[Learn more](https://github.com/kubernetes/contrib/issues/1140#issuecomment-231641402)
+
 ## Limited Windows support
 
 Due to inherent platform limitations, `terminus` has limited support for Windows.
 You can expect `SIGINT` to work, as well as `SIGBREAK` and to some extent `SIGHUP`.
 However `SIGTERM` will never work on Windows because killing a process in the task manager is unconditional, i.e., there's no way for an application to detect or prevent it.
 Here's some relevant documentation from [`libuv`](https://github.com/libuv/libuv) to learn more about what `SIGINT`, `SIGBREAK` etc. signify and what's supported on Windows - http://docs.libuv.org/en/v1.x/signal.html.
-Also see https://nodejs.org/api/process.html#process_signal_events.
+Also, see https://nodejs.org/api/process.html#process_signal_events.
