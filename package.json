@@ -32,10 +32,15 @@
     "mocha": "^5.0.0",
     "node-fetch": "^2.0.0",
     "nyc": "^11.3.0",
+    "pre-commit": "^1.2.2",
     "semantic-release": "^15.5.1",
     "standard": "^11.0.1",
     "supertest": "^3.0.0",
     "travis-deploy-once": "^5.0.1",
     "typescript": "^2.6.2"
-  }
+  },
+  "pre-commit": [
+    "lint",
+    "test"
+  ]
 }
