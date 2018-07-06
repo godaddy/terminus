@@ -36,7 +36,7 @@
     "semantic-release": "^15.5.1",
     "standard": "^11.0.1",
     "supertest": "^3.0.0",
-    "travis-deploy-once": "^5.0.0",
+    "travis-deploy-once": "^5.0.1",
     "typescript": "^2.6.2"
   },
   "pre-commit": [
