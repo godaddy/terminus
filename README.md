@@ -130,7 +130,7 @@ function beforeShutdown () {
   // given your readiness probes run every 5 second
   // may be worth using a bigger number so you won't
   // run into any race conditions
-  return Promise(resolve => {
+  return new Promise(resolve => {
     setTimeout(resolve, 5000)
   })
 }
