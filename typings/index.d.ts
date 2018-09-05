@@ -1,6 +1,6 @@
 declare module "@godaddy/terminus" {
 
-   type HealthCheck = () => Promise<any>;
+  type HealthCheck = () => Promise<any>;
 
   interface HealthCheckMap {
     [key: string]: HealthCheck;
@@ -13,6 +13,7 @@ declare module "@godaddy/terminus" {
     signals?: string[];
     onSignal?: () => Promise<any>;
     onShutdown?: () => Promise<any>;
+    beforeShutdown?: () => Promise<any>;
     logger?: (msg: string, err: Error) => void;
 
     /** Deprecated. */
