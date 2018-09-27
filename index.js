@@ -1,9 +1,9 @@
 'use strict'
 
 const { createTerminus } = require('./lib/terminus')
-const { TerminusError } = require('./lib/terminus-error')
+const { HealthCheckError } = require('./lib/terminus-error')
 
 module.exports = {
   createTerminus,
-  TerminusError
+  HealthCheckError
 }
