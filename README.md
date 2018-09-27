@@ -78,7 +78,7 @@ server.listen(PORT || 3000);
 
 ```js
 const http = require('http');
-const { createTerminus, TerminusError } = require('@godaddy/terminus');
+const { createTerminus, HealthCheckError } = require('@godaddy/terminus');
 
 createTerminus(server, {
   healthChecks: {
@@ -92,7 +92,7 @@ createTerminus(server, {
         return undefined
       }))).then(() => {
         if (errors.length) {
-          throw new TerminusError('healtcheck failed', errors)
+          throw new HealthCheckError('healtcheck failed', errors)
         }
       })
     }
