@@ -3,7 +3,7 @@ const http = require('http')
 const cassandra = require('cassandra-driver')
 const terminus = require('../../lib/terminus')
 const app = express()
-const client = new cassandra.Client({contactPoints: ['127.0.0.1']})
+const client = new cassandra.Client({ contactPoints: ['127.0.0.1'] })
 
 function onHealthCheck () {
   return client.execute('SELECT now() FROM system.local')
