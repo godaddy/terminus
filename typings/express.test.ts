@@ -12,7 +12,7 @@ function onHealthCheck() {
   return Promise.resolve();
 }
 
-terminus(http.createServer(app), {
+terminus.createTerminus(http.createServer(app), {
   logger: console.log,
   healthChecks: {
     "/healthcheck": () => Promise.resolve()
