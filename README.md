@@ -60,13 +60,14 @@ const options = {
   // cleanup options
   timeout: 1000,                   // [optional = 1000] number of milliseconds before forcefull exiting
   signal,                          // [optional = 'SIGTERM'] what signal to listen for relative to shutdown
-  signals,                          // [optional = []] array of signals to listen for relative to shutdown
+  signals,                         // [optional = []] array of signals to listen for relative to shutdown
   beforeShutdown,                  // [optional] called before the HTTP server starts its shutdown
   onSignal,                        // [optional] cleanup function, returning a promise (used to be onSigterm)
   onShutdown,                      // [optional] called right before exiting
 
   // both
-  logger                           // [optional] logger function to be called with errors
+  logger,                          // [optional] logger function to be called with errors
+  onSendFailure                    // [optional] callback when sending 503 on healthcheck failures
 };
 
 createTerminus(server, options);
