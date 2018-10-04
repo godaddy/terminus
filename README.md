@@ -67,7 +67,7 @@ const options = {
 
   // both
   logger,                          // [optional] logger function to be called with errors
-  onSendFailure                    // [optional] callback when sending 503 on healthcheck failures
+  onSendFailure                    // [optional] function to be called before sending 503 on healthcheck failures
 };
 
 createTerminus(server, options);
