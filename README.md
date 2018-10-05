@@ -64,7 +64,7 @@ const options = {
   beforeShutdown,                  // [optional] called before the HTTP server starts its shutdown
   onSignal,                        // [optional] cleanup function, returning a promise (used to be onSigterm)
   onShutdown,                      // [optional] called right before exiting
-  onSendFailureDuringShutdown,     // [optional] function to be called before sending each 503 during shutdowns
+  onSendFailureDuringShutdown,     // [optional] called before sending each 503 during shutdowns
 
   // both
   logger                           // [optional] logger function to be called with errors
