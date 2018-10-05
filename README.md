@@ -41,7 +41,7 @@ function healthCheck () {
   )
 }
 
-const server = http.createServer((request, response) => {
+let server = http.createServer((request, response) => {
   response.end(
     `<html>
       <body>
@@ -70,7 +70,12 @@ const options = {
   logger                           // [optional] logger function to be called with errors
 };
 
-new Terminus(server, options);
+const terminus = new Terminus(server, options);
+
+// Returns the given server instance
+server = terminus.getHttpServer();
+// Returns the current health status
+terminus.getHealthStatus('/healthcheck').then((status) => console.log(status));
 
 server.listen(PORT || 3000);
 ```
