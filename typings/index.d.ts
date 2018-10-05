@@ -2,13 +2,22 @@ declare module "@godaddy/terminus" {
 
   export type HealthCheck = () => Promise<any>;
 
-  export class HealthCheckError extends Error {
+  export class TerminusError extends Error { }
+
+  export class HealthCheckError extends TerminusError {
     constructor(message: string, causes: any);
     public causes: string;
   }
 
+  export class HealthCheckNotFoundError extends TerminusError { }
+
   export interface HealthCheckMap {
     [key: string]: HealthCheck;
+  }
+
+  export interface HealthStatus {
+    status: 'ok' | 'error';
+    error: string[];
   }
 
   export interface TerminusOptions {
@@ -19,14 +28,18 @@ declare module "@godaddy/terminus" {
     onSignal?: () => Promise<any>;
     onShutdown?: () => Promise<any>;
     beforeShutdown?: () => Promise<any>;
+    onSendFailureDuringShutdown?: () => Promise<any>;
     logger?: (msg: string, err: Error) => void;
 
     /** Deprecated. */
     onSigterm?: () => Promise<any>;
   }
 
-  export type Terminus = <T>(server: T, options?: TerminusOptions) => T;
+  export class Terminus<T> {
+    constructor(server: T, options?: TerminusOptions);
+    getHealthStatus(url: string): Promise<HealthStatus>;
+    getHttpServer(): T;
+  }
 
-  export const createTerminus: Terminus;
 
 }

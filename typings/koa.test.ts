@@ -1,5 +1,5 @@
 import * as http from "http";
-import * as terminus from "@godaddy/terminus";
+import { Terminus } from "@godaddy/terminus";
 import * as Koa from "koa";
 
 const app = new Koa();
@@ -10,7 +10,7 @@ function onHealthCheck() {
   return Promise.resolve();
 }
 
-terminus.createTerminus(server, {
+new Terminus(server, {
   logger: console.log,
   healthChecks: {
     "/healthcheck": () => Promise.resolve()

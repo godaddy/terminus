@@ -1,5 +1,5 @@
 import * as http from "http";
-import { createTerminus, HealthCheckError, HealthCheck, TerminusOptions } from "@godaddy/terminus";
+import { Terminus, HealthCheckError, HealthCheck, TerminusOptions } from "@godaddy/terminus";
 
 async function onSignal() {
   console.log('server is starting cleanup');
@@ -33,6 +33,6 @@ const options: TerminusOptions = {
   logger: console.log
 };
 
-createTerminus(server, options);
+new Terminus(server, options);
 
 server.listen(3000);
