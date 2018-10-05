@@ -21,7 +21,7 @@ $ npm i @godaddy/terminus --save
 
 ```javascript
 const http = require('http');
-const { createTerminus } = require('@godaddy/terminus');
+const { Terminus } = require('@godaddy/terminus');
 
 function onSignal () {
   console.log('server is starting cleanup');
@@ -70,7 +70,7 @@ const options = {
   logger                           // [optional] logger function to be called with errors
 };
 
-createTerminus(server, options);
+new Terminus(server, options);
 
 server.listen(PORT || 3000);
 ```
@@ -79,9 +79,9 @@ server.listen(PORT || 3000);
 
 ```js
 const http = require('http');
-const { createTerminus, HealthCheckError } = require('@godaddy/terminus');
+const { Terminus, HealthCheckError } = require('@godaddy/terminus');
 
-createTerminus(server, {
+new Terminus(server, {
   healthChecks: {
     '/healthcheck': async function () {
       const errors = []
@@ -118,7 +118,7 @@ const options = {
   // opts
 };
 
-createTerminus(server, options);
+new Terminus(server, options);
 
 server.listen(PORT || 3000);
 ```
@@ -136,7 +136,7 @@ const options = {
   // opts
 };
 
-createTerminus(server, options);
+new Terminus(server, options);
 
 server.listen(PORT || 3000);
 ```
@@ -162,7 +162,7 @@ function beforeShutdown () {
     setTimeout(resolve, 5000)
   })
 }
-createTerminus(server, {
+new Terminus(server, {
   beforeShutdown
 })
 ```
