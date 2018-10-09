@@ -21,7 +21,7 @@ $ npm i @godaddy/terminus --save
 
 ```javascript
 const http = require('http');
-const { createTerminus } = require('@godaddy/terminus');
+const { createTerminus, getStatus } = require('@godaddy/terminus');
 
 function onSignal () {
   console.log('server is starting cleanup');
@@ -73,6 +73,11 @@ const options = {
 createTerminus(server, options);
 
 server.listen(PORT || 3000);
+
+
+// in case you'd like to query the status of a healthcheck manually
+getStatus('/health')
+  .then(console.log)
 ```
 
 ### With custom error messages

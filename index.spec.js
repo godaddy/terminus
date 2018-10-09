@@ -1,6 +1,6 @@
 const expect = require('chai').expect
 
-const { createTerminus, HealthCheckError } = require('./')
+const { getStatus, createTerminus, HealthCheckError } = require('./')
 
 describe('Terminus API', () => {
   it('exposes HealthCheckError', () => {
@@ -9,5 +9,9 @@ describe('Terminus API', () => {
 
   it('exposes createTerminus', () => {
     expect(createTerminus).to.be.a('function')
+  })
+
+  it('exposes getStatus', () => {
+    expect(getStatus).to.be.a('function')
   })
 })
