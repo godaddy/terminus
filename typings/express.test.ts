@@ -20,7 +20,7 @@ const terminus = new Terminus(http.createServer(app), {
 })
 
 
-terminus.getHttpServer().listen(3000);
+terminus.server.listen(3000);
 
 async () => {
   const status = await terminus.getHealthStatus('/healthcheck');

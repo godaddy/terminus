@@ -73,7 +73,7 @@ const options = {
 const terminus = new Terminus(server, options);
 
 // Returns the given server instance
-server = terminus.getHttpServer();
+server = terminus.server;
 // Returns the current health status
 terminus.getHealthStatus('/healthcheck').then((status) => console.log(status));
 

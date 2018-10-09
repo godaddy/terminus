@@ -38,7 +38,7 @@ declare module "@godaddy/terminus" {
   export class Terminus<T> {
     constructor(server: T, options?: TerminusOptions);
     getHealthStatus(url: string): Promise<HealthStatus>;
-    getHttpServer(): T;
+    server: T;
   }
 
 
