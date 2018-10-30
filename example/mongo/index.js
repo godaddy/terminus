@@ -13,7 +13,7 @@ app.get('/', async (req, res) => {
 })
 
 function onHealthCheck () {
-  return db.admin().ping()
+  return db.command({ping: 1})
 }
 
 function onSignal () {
