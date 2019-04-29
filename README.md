@@ -34,10 +34,10 @@ function onShutdown () {
   console.log('cleanup finished, server is shutting down');
 }
 
-function healthCheck () {
+function healthcheck () {
   return Promise.resolve(
     // optionally include a resolve value to be included as
-    // info in the health check response
+    // info in the healthcheck response
   )
 }
 
@@ -52,9 +52,9 @@ const server = http.createServer((request, response) => {
 })
 
 const options = {
-  // health check options
+  // healthcheck options
   healthChecks: {
-    '/healthcheck': healthCheck    // a function returning a promise indicating service health
+    '/healthcheck': healthcheck    // a function returning a promise indicating service health
   },
 
   // cleanup options
