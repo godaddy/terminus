@@ -34,7 +34,7 @@ function onShutdown () {
   console.log('cleanup finished, server is shutting down');
 }
 
-function healthCheck () {
+function healthcheck () {
   return Promise.resolve(
     // optionally include a resolve value to be included as
     // info in the healthcheck response
@@ -52,13 +52,13 @@ const server = http.createServer((request, response) => {
 })
 
 const options = {
-  // healtcheck options
+  // healthcheck options
   healthChecks: {
-    '/healthcheck': healthCheck    // a promise returning function indicating service health
+    '/healthcheck': healthcheck    // a function returning a promise indicating service health
   },
 
   // cleanup options
-  timeout: 1000,                   // [optional = 1000] number of milliseconds before forcefull exiting
+  timeout: 1000,                   // [optional = 1000] number of milliseconds before forceful exiting
   signal,                          // [optional = 'SIGTERM'] what signal to listen for relative to shutdown
   signals,                         // [optional = []] array of signals to listen for relative to shutdown
   beforeShutdown,                  // [optional] called before the HTTP server starts its shutdown
