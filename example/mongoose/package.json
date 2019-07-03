@@ -4,10 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "mongoose": "^5.4.2"
-  }
+    "mongoose": "^5.4.2",
+    "snyk": "^1.189.0"
+  },
+  "snyk": true
 }
