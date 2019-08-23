@@ -4,7 +4,7 @@ declare module "@godaddy/terminus" {
 
   export class HealthCheckError extends Error {
     constructor(message: string, causes: any);
-    public causes: string;
+    public causes: any;
   }
 
   export interface HealthCheckMap {
@@ -17,6 +17,7 @@ declare module "@godaddy/terminus" {
     signal?: string;
     signals?: string[];
     onSignal?: () => Promise<any>;
+    onSendFailureDuringShutdown?: () => Promise<any>;
     onShutdown?: () => Promise<any>;
     beforeShutdown?: () => Promise<any>;
     logger?: (msg: string, err: Error) => void;
@@ -28,5 +29,4 @@ declare module "@godaddy/terminus" {
   export type Terminus = <T>(server: T, options?: TerminusOptions) => T;
 
   export const createTerminus: Terminus;
-
 }
