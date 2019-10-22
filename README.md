@@ -54,7 +54,7 @@ const server = http.createServer((request, response) => {
 const options = {
   // health check options
   healthChecks: {
-    '/healthcheck': healthCheck    // a function returning a promise indicating service health,
+    '/healthcheck': healthCheck,    // a function returning a promise indicating service health,
     verbatim: true // [optional = false] use object returned from /healthcheck verbatim in response
   },
 
