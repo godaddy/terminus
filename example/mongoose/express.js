@@ -25,7 +25,7 @@ function onSignal () {
   return new Promise((resolve, reject) => {
     connection.close(false)
       .then(() => {
-        console.info(`Mongoose has disconnected`)
+        console.info('Mongoose has disconnected')
         resolve()
       })
       .catch(reject)
