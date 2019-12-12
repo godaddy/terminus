@@ -95,7 +95,7 @@ createTerminus(server, {
         return undefined
       }))).then(() => {
         if (errors.length) {
-          throw new HealthCheckError('healtcheck failed', errors)
+          throw new HealthCheckError('healthcheck failed', errors)
         }
       })
     }
