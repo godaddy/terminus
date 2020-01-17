@@ -25,7 +25,8 @@ const healthcheck: HealthCheck = () => {
 
 const options: TerminusOptions = {
   healthChecks: {
-    "/healthcheck": healthcheck
+    "/healthcheck": healthcheck,
+    verbatim: true
   },
   timeout: 1000,
   onSignal,
