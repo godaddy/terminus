@@ -7,8 +7,9 @@ declare module "@godaddy/terminus" {
     public causes: any;
   }
 
-  export interface HealthCheckMap {
-    [key: string]: HealthCheck;
+  export type HealthCheckMap = {
+    verbatim?: boolean;
+    [key: string]: HealthCheck | boolean;
   }
 
   export interface TerminusOptions {
