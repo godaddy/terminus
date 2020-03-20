@@ -20,7 +20,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "es6-promisify": "^6.0.0",
+    "es6-promisify": "^6.0.2",
     "stoppable": "^1.0.5"
   },
   "devDependencies": {
