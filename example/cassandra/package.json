@@ -10,6 +10,6 @@
   "author": "Łukasz Szewczak <lukaszewczak@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "cassandra-driver": "^3.5.0"
+    "cassandra-driver": "^3.6.0"
   }
 }
