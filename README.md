@@ -69,7 +69,7 @@ const options = {
   onSendFailureDuringShutdown,     // [optional] called before sending each 503 during shutdowns
 
   // both
-  logger                           // [optional] logger function to be called with errors
+  logger                           // [optional] logger function to be called with errors. Example logger call: ('error happened during shutdown', error). See terminus.js for more details.
 };
 
 createTerminus(server, options);
