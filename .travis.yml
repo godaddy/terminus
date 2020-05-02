@@ -5,9 +5,9 @@ cache:
 notifications:
   email: false
 node_js:
-  - '8'
   - '10'
   - '12'
+  - '14'
 
 # https://github.com/greenkeeperio/greenkeeper-lockfile#npm
 before_install:
