@@ -3,8 +3,6 @@
 
 [![Build Status](https://travis-ci.org/godaddy/terminus.svg?branch=master)](https://travis-ci.org/godaddy/terminus)
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/godaddy/terminus.svg)](https://greenkeeper.io/)
-
 # terminus
 
 Adds graceful shutdown and Kubernetes readiness / liveness checks for any HTTP applications.
@@ -57,7 +55,7 @@ const options = {
     '/healthcheck': healthCheck,    // a function returning a promise indicating service health,
     verbatim: true // [optional = false] use object returned from /healthcheck verbatim in response
   },
-  caseInsensitive, // [optional] whether given health checks routes are case insensitive (defaults to false) 
+  caseInsensitive, // [optional] whether given health checks routes are case insensitive (defaults to false)
 
   // cleanup options
   timeout: 1000,                   // [optional = 1000] number of milliseconds before forceful exiting
