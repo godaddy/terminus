@@ -1,0 +1,8 @@
+.vscode
+*.log
+.nyc_output
+.idea
+example
+*.spec.js
+.eslintrc
+.travis.yml
