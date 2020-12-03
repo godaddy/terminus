@@ -5,18 +5,17 @@ cache:
 notifications:
   email: false
 node_js:
-  - '10'
-  - '12'
-  - '13'
-  - '14'
+  - "10"
+  - "12"
+  - "14"
 
 before_install:
-# package-lock.json was introduced in npm@5
-- '[[ $(node -v) =~ ^v9.*$ ]] || npm install -g npm@latest' # skipped when using node 9
+  # package-lock.json was introduced in npm@5
+  - "[[ $(node -v) =~ ^v9.*$ ]] || npm install -g npm@latest" # skipped when using node 9
 install: npm install
 
 after_success:
-  - nvm install 13 && nvm use 13 && npm run travis-deploy-once "npm run semantic-release"
+  - nvm install 14 && nvm use 14 && npm run travis-deploy-once "npm run semantic-release"
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
