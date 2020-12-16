@@ -9,8 +9,7 @@
     "test": "mocha index.spec.js lib/**/*.spec.js && npm run test-typings",
     "lint": "standard --fix --env mocha",
     "coverage": "nyc mocha index.spec.js lib/**/*.spec.js",
-    "semantic-release": "semantic-release",
-    "travis-deploy-once": "travis-deploy-once"
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
