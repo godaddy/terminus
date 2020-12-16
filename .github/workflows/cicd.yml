@@ -1,5 +1,5 @@
 name: CICD
-on: [push, pull_request]
+on: [pull_request]
 
 jobs:
   build:
@@ -8,7 +8,7 @@ jobs:
       matrix:
         node: ['10', '12', '14']
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
