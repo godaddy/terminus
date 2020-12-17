@@ -1,6 +1,6 @@
 {
   "name": "@godaddy/terminus",
-  "version": "4.5.0",
+  "version": "0.0.0-development",
   "description": "",
   "main": "index.js",
   "types": "./typings/index.d.ts",
@@ -32,7 +32,7 @@
     "nyc": "^15.0.0",
     "pre-commit": "^1.2.2",
     "semantic-release": "^17.0.0",
-    "standard": "^14.0.0",
+    "standard": "^16.0.3",
     "supertest": "^4.0.0",
     "typescript": "^2.6.2"
   },
