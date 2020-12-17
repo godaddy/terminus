@@ -1,10 +1,10 @@
 const express = require('express')
 const http = require('http')
-var oracledb = require('oracledb')
+const oracledb = require('oracledb')
 const terminus = require('../../lib/terminus')
 const app = express()
 
-var config = {
+const config = {
   user: process.env.NODE_ORACLEDB_USER || 'scott',
   password: process.env.NODE_ORACLEDB_PASSWORD || 'tiger',
   connectString: process.env.NODE_ORACLEDB_CONNECTIONSTRING || 'localhost:1521/XE',
@@ -15,18 +15,18 @@ var config = {
 
 async function dbConnect () {
   await oracledb.createPool(config)
-  var conn = await oracledb.getConnection()
+  await oracledb.getConnection()
 }
 
 app.get('/dual', async (req, res) => {
-  var conn = await oracledb.getConnection()
+  const conn = await oracledb.getConnection()
   const result = await conn
     .execute('select JSON_OBJECT(\'id\' value sys_guid()) from dual')
   res.json(result.rows[0])
 })
 
 async function onHealthCheck () {
-  var conn = await oracledb.getConnection()
+  const conn = await oracledb.getConnection()
   console.log('pinging oracle db')
   return conn.ping()
 }

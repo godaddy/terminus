@@ -1,6 +1,6 @@
 {
   "name": "@godaddy/terminus",
-  "version": "4.5.0",
+  "version": "0.0.0-development",
   "description": "",
   "main": "index.js",
   "types": "./typings/index.d.ts",
@@ -9,8 +9,7 @@
     "test": "mocha index.spec.js lib/**/*.spec.js && npm run test-typings",
     "lint": "standard --fix --env mocha",
     "coverage": "nyc mocha index.spec.js lib/**/*.spec.js",
-    "semantic-release": "semantic-release",
-    "travis-deploy-once": "travis-deploy-once"
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
@@ -33,9 +32,8 @@
     "nyc": "^15.0.0",
     "pre-commit": "^1.2.2",
     "semantic-release": "^17.0.0",
-    "standard": "^14.0.0",
+    "standard": "^16.0.3",
     "supertest": "^4.0.0",
-    "travis-deploy-once": "^5.0.1",
     "typescript": "^2.6.2"
   },
   "pre-commit": [
