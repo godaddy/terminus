@@ -61,6 +61,7 @@ const options = {
   timeout: 1000,                   // [optional = 1000] number of milliseconds before forceful exiting
   signal,                          // [optional = 'SIGTERM'] what signal to listen for relative to shutdown
   signals,                         // [optional = []] array of signals to listen for relative to shutdown
+  sendFailuresDuringShutdown,      // [optional = true] whether or not to send failure (503) during shutdown
   beforeShutdown,                  // [optional] called before the HTTP server starts its shutdown
   onSignal,                        // [optional] cleanup function, returning a promise (used to be onSigterm)
   onShutdown,                      // [optional] called right before exiting
