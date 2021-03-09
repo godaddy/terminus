@@ -53,7 +53,8 @@ const options = {
   // health check options
   healthChecks: {
     '/healthcheck': healthCheck,    // a function returning a promise indicating service health,
-    verbatim: true // [optional = false] use object returned from /healthcheck verbatim in response
+    verbatim: true, // [optional = false] use object returned from /healthcheck verbatim in response,
+    __unsafeExposeStackTraces: true // [optional = false] return stack traces in error response if healthchecks throw errors
   },
   caseInsensitive, // [optional] whether given health checks routes are case insensitive (defaults to false)
 

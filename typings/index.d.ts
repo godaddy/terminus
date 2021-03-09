@@ -8,9 +8,8 @@ declare module "@godaddy/terminus" {
   }
 
   export type HealthCheckMap = {
-    [key: string]: HealthCheck | boolean;
-  } | {
-    verbatim: boolean
+    verbatim?: boolean
+    __unsafeExposeStackTraces?: boolean;
     [key: string]: HealthCheck | boolean;
   }
 
