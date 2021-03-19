@@ -1,5 +1,4 @@
 declare module "@godaddy/terminus" {
-
   export type HealthCheck = () => Promise<any>;
 
   export class HealthCheckError extends Error {
@@ -8,10 +7,10 @@ declare module "@godaddy/terminus" {
   }
 
   export type HealthCheckMap = {
-    verbatim?: boolean
+    verbatim?: boolean;
     __unsafeExposeStackTraces?: boolean;
-    [key: string]: HealthCheck | boolean;
-  }
+    [key: string]: HealthCheck | boolean | undefined;
+  };
 
   export interface TerminusOptions {
     healthChecks?: HealthCheckMap;
