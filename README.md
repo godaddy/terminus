@@ -1,9 +1,7 @@
+# terminus
 
 [![Join Slack](https://img.shields.io/badge/Join%20us%20on-Slack-e01563.svg)](https://godaddy-oss-slack.herokuapp.com/)
-
-[![Build Status](https://travis-ci.org/godaddy/terminus.svg?branch=master)](https://travis-ci.org/godaddy/terminus)
-
-# terminus
+[![Build Status](https://github.com/godaddy/terminus/actions/workflows/cicd.yml/badge.svg)](https://github.com/godaddy/terminus/actions/workflows/cicd.yml/badge.svg)
 
 Adds graceful shutdown and Kubernetes readiness / liveness checks for any HTTP applications.
 
@@ -12,7 +10,7 @@ Adds graceful shutdown and Kubernetes readiness / liveness checks for any HTTP a
 Install via npm:
 
 ```console
-$ npm i @godaddy/terminus --save
+npm i @godaddy/terminus --save
 ```
 
 ## Usage
@@ -176,5 +174,5 @@ createTerminus(server, {
 Due to inherent platform limitations, `terminus` has limited support for Windows.
 You can expect `SIGINT` to work, as well as `SIGBREAK` and to some extent `SIGHUP`.
 However `SIGTERM` will never work on Windows because killing a process in the task manager is unconditional, i.e., there's no way for an application to detect or prevent it.
-Here's some relevant documentation from [`libuv`](https://github.com/libuv/libuv) to learn more about what `SIGINT`, `SIGBREAK` etc. signify and what's supported on Windows - http://docs.libuv.org/en/v1.x/signal.html.
-Also, see https://nodejs.org/api/process.html#process_signal_events.
+Here's some relevant documentation from [`libuv`](https://github.com/libuv/libuv) to learn more about what `SIGINT`, `SIGBREAK` etc. signify and what's supported on Windows - [http://docs.libuv.org/en/v1.x/signal.html]([http://docs.libuv.org/en/v1.x/signal.html).
+Also, see [https://nodejs.org/api/process.html#process_signal_events](https://nodejs.org/api/process.html#process_signal_events).
