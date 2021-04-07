@@ -39,7 +39,7 @@ jobs:
       with:
         node-version: 12.x
     - name: Release
-      run: npm run semantic-release
+      run: npx run semantic-release
       env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
