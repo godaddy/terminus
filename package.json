@@ -6,8 +6,7 @@
   "types": "./typings/index.d.ts",
   "scripts": {
     "test-typings": "tsc --lib ES2015 --noEmit typings/*.ts",
-    "test": "mocha index.spec.js lib/**/*.spec.js && npm run test-typings",
-    "posttest": "npm run lint",
+    "test": "mocha index.spec.js lib/**/*.spec.js && npm run test-typings && npm run lint",
     "lint": "standard --fix --env mocha",
     "coverage": "nyc mocha index.spec.js lib/**/*.spec.js",
     "semantic-release": "semantic-release"
