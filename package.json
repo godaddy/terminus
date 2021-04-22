@@ -34,13 +34,15 @@
     "semantic-release": "^17.4.2",
     "standard": "^16.0.3",
     "supertest": "^4.0.0",
-    "typescript": "^2.6.2"
+    "typescript": "^3.9.9"
   },
   "pre-commit": [
     "lint",
     "test"
   ],
   "release": {
-    "branches": ["main"]
+    "branches": [
+      "main"
+    ]
   }
 }
