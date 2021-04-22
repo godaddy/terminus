@@ -39,5 +39,8 @@
   "pre-commit": [
     "lint",
     "test"
-  ]
+  ],
+  "release": {
+    "branches": ["main"]
+  }
 }
