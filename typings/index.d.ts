@@ -14,6 +14,7 @@ declare module "@godaddy/terminus" {
 
   export interface TerminusOptions {
     healthChecks?: HealthCheckMap;
+    caseInsensitive?: boolean;
     timeout?: number;
     signal?: string;
     signals?: string[];
