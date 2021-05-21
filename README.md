@@ -30,7 +30,8 @@ function onShutdown () {
   console.log('cleanup finished, server is shutting down');
 }
 
-function healthCheck () {
+function healthCheck ({ state }) {
+  // `state.isShuttingDown` (boolean) shows whether the server is shutting down or not
   return Promise.resolve(
     // optionally include a resolve value to be included as
     // info in the health check response
@@ -50,7 +51,7 @@ const server = http.createServer((request, response) => {
 const options = {
   // health check options
   healthChecks: {
-    '/healthcheck': healthCheck,    // a function returning a promise indicating service health,
+    '/healthcheck': healthCheck,    // a function accepting a state and returning a promise indicating service health,
     verbatim: true, // [optional = false] use object returned from /healthcheck verbatim in response,
     __unsafeExposeStackTraces: true // [optional = false] return stack traces in error response if healthchecks throw errors
   },
