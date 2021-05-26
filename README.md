@@ -56,16 +56,17 @@ const options = {
     __unsafeExposeStackTraces: true // [optional = false] return stack traces in error response if healthchecks throw errors
   },
   caseInsensitive, // [optional] whether given health checks routes are case insensitive (defaults to false)
+  failureStatusCode, // [optional] HTTP status code for health check failure(s) (defaults to 503)
 
   // cleanup options
   timeout: 1000,                   // [optional = 1000] number of milliseconds before forceful exiting
   signal,                          // [optional = 'SIGTERM'] what signal to listen for relative to shutdown
   signals,                         // [optional = []] array of signals to listen for relative to shutdown
-  sendFailuresDuringShutdown,      // [optional = true] whether or not to send failure (503) during shutdown
+  sendFailuresDuringShutdown,      // [optional = true] whether or not to send failure status code during shutdown
   beforeShutdown,                  // [optional] called before the HTTP server starts its shutdown
   onSignal,                        // [optional] cleanup function, returning a promise (used to be onSigterm)
   onShutdown,                      // [optional] called right before exiting
-  onSendFailureDuringShutdown,     // [optional] called before sending each 503 during shutdowns
+  onSendFailureDuringShutdown,     // [optional] called before sending each failure status code during shutdowns
 
   // both
   logger                           // [optional] logger function to be called with errors. Example logger call: ('error happened during shutdown', error). See terminus.js for more details.
