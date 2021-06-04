@@ -19,24 +19,23 @@ npm i @godaddy/terminus --save
 const http = require('http');
 const { createTerminus } = require('@godaddy/terminus');
 
-function onSignal() {
+function onSignal () {
   console.log('server is starting cleanup');
   return Promise.all([
     // your clean logic, like closing database connections
   ]);
 }
 
-function onShutdown() {
+function onShutdown () {
   console.log('cleanup finished, server is shutting down');
 }
 
-function healthCheck({ state }) {
+function healthCheck ({ state }) {
   // `state.isShuttingDown` (boolean) shows whether the server is shutting down or not
-  return Promise
-    .resolve
+  return Promise.resolve(
     // optionally include a resolve value to be included as
     // info in the health check response
-    ();
+  )
 }
 
 const server = http.createServer((request, response) => {
@@ -46,33 +45,33 @@ const server = http.createServer((request, response) => {
         <h1>Hello, World!</h1>
        </body>
      </html>`
-  );
-});
+   );
+})
 
 const options = {
   // health check options
   healthChecks: {
-    '/healthcheck': healthCheck, // a function accepting a state and returning a promise indicating service health,
-    verbatim: true, // [optional = false] use object returned from /healthcheck verbatim in response,
-    __unsafeExposeStackTraces: true, // [optional = false] return stack traces in error response if healthchecks throw errors
+    '/healthcheck': healthCheck,    // a function accepting a state and returning a promise indicating service health,
+    verbatim: true,                 // [optional = false] use object returned from /healthcheck verbatim in response,
+    __unsafeExposeStackTraces: true // [optional = false] return stack traces in error response if healthchecks throw errors
   },
-  caseInsensitive, // [optional] whether given health checks routes are case insensitive (defaults to false)
+  caseInsensitive,                  // [optional] whether given health checks routes are case insensitive (defaults to false)
 
-  statusOk, // [optional = 200] status to be returned for successful healthchecks
-  statusError, // [optional = 503] status to be returned for unsuccessful healthchecks
+  statusOk,                         // [optional = 200] status to be returned for successful healthchecks
+  statusError,                      // [optional = 503] status to be returned for unsuccessful healthchecks
 
   // cleanup options
-  timeout: 1000, // [optional = 1000] number of milliseconds before forceful exiting
-  signal, // [optional = 'SIGTERM'] what signal to listen for relative to shutdown
-  signals, // [optional = []] array of signals to listen for relative to shutdown
-  sendFailuresDuringShutdown, // [optional = true] whether or not to send failure (503) during shutdown
-  beforeShutdown, // [optional] called before the HTTP server starts its shutdown
-  onSignal, // [optional] cleanup function, returning a promise (used to be onSigterm)
-  onShutdown, // [optional] called right before exiting
-  onSendFailureDuringShutdown, // [optional] called before sending each 503 during shutdowns
+  timeout: 1000,                    // [optional = 1000] number of milliseconds before forceful exiting
+  signal,                           // [optional = 'SIGTERM'] what signal to listen for relative to shutdown
+  signals,                          // [optional = []] array of signals to listen for relative to shutdown
+  sendFailuresDuringShutdown,       // [optional = true] whether or not to send failure (503) during shutdown
+  beforeShutdown,                   // [optional] called before the HTTP server starts its shutdown
+  onSignal,                         // [optional] cleanup function, returning a promise (used to be onSigterm)
+  onShutdown,                       // [optional] called right before exiting
+  onSendFailureDuringShutdown,      // [optional] called before sending each 503 during shutdowns
 
   // both
-  logger, // [optional] logger function to be called with errors. Example logger call: ('error happened during shutdown', error). See terminus.js for more details.
+  logger                            // [optional] logger function to be called with errors. Example logger call: ('error happened during shutdown', error). See terminus.js for more details.
 };
 
 createTerminus(server, options);
@@ -89,24 +88,20 @@ const { createTerminus, HealthCheckError } = require('@godaddy/terminus');
 createTerminus(server, {
   healthChecks: {
     '/healthcheck': async function () {
-      const errors = [];
-      return Promise.all(
-        [
-          // all your health checks goes here
-        ].map((p) =>
-          p.catch((error) => {
-            // silently collecting all the errors
-            errors.push(error);
-            return undefined;
-          })
-        )
-      ).then(() => {
+      const errors = []
+      return Promise.all([
+        // all your health checks goes here
+      ].map(p => p.catch((error) => {
+        // silently collecting all the errors
+        errors.push(error)
+        return undefined
+      }))).then(() => {
         if (errors.length) {
-          throw new HealthCheckError('healthcheck failed', errors);
+          throw new HealthCheckError('healthcheck failed', errors)
         }
-      });
-    },
-  },
+      })
+    }
+  }
 });
 ```
 
@@ -163,17 +158,17 @@ During this time, it is possible that load-balancers (like the nginx ingress con
 To make sure you don't lose any connections, we recommend delaying the shutdown with the number of milliseconds that's defined by the readiness probe in your deployment configuration. To help with this, terminus exposes an option called `beforeShutdown` that takes any Promise-returning function.
 
 ```javascript
-function beforeShutdown() {
+function beforeShutdown () {
   // given your readiness probes run every 5 second
   // may be worth using a bigger number so you won't
   // run into any race conditions
-  return new Promise((resolve) => {
-    setTimeout(resolve, 5000);
-  });
+  return new Promise(resolve => {
+    setTimeout(resolve, 5000)
+  })
 }
 createTerminus(server, {
-  beforeShutdown,
-});
+  beforeShutdown
+})
 ```
 
 [Learn more](https://github.com/kubernetes/contrib/issues/1140#issuecomment-231641402)
