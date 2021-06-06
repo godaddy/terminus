@@ -58,6 +58,7 @@ const options = {
   caseInsensitive,                  // [optional] whether given health checks routes are case insensitive (defaults to false)
 
   statusOk,                         // [optional = 200] status to be returned for successful healthchecks
+  statusOkResponse,                 // [optional = { status: 'ok' }] status response to be returned for successful healthchecks
   statusError,                      // [optional = 503] status to be returned for unsuccessful healthchecks
 
   // cleanup options
