@@ -22,6 +22,7 @@ declare module "@godaddy/terminus" {
     statusOk?: number,
     statusOkResponse?: Record<string, unknown>,
     statusError?: number,
+    statusErrorResponse?: Record<string, unknown>,
     onSignal?: () => Promise<any>;
     onSendFailureDuringShutdown?: () => Promise<any>;
     onShutdown?: () => Promise<any>;
