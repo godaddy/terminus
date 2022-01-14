@@ -105,6 +105,40 @@ createTerminus(server, {
 });
 ```
 
+### With custom headers
+```js
+const http = require("http");
+const express = require("express");
+const { createTerminus, HealthCheckError } = require('@godaddy/terminus');
+const app = express();
+
+app.get("/", (req, res) => {
+  res.send("ok");
+});
+
+const server = http.createServer(app);
+
+function healthCheck({ state }) {
+  return Promise.resolve();
+}
+
+const options = {
+  healthChecks: {
+    "/healthcheck": healthCheck,
+    verbatim: true,
+    __unsafeExposeStackTraces: true,
+  },
+  headers: {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "OPTIONS, POST, GET",
+  },
+};
+
+terminus.createTerminus(server, options);
+
+server.listen(3000);
+```
+
 ### With express
 
 ```javascript
