@@ -26,6 +26,7 @@ declare module "@godaddy/terminus" {
     onShutdown?: () => Promise<any>;
     beforeShutdown?: () => Promise<any>;
     logger?: (msg: string, err: Error) => void;
+    headers?:{ [key: string]: string };
 
     /** Deprecated. */
     onSigterm?: () => Promise<any>;
