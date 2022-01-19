@@ -1,5 +1,9 @@
 declare module "@godaddy/terminus" {
-  export type HealthCheck = () => Promise<any>;
+  export interface TerminusState {
+    isShuttingDown: boolean;
+  }
+
+  export type HealthCheck = ({ state }: { state: TerminusState }) => Promise<any>;
 
   export class HealthCheckError extends Error {
     constructor(message: string, causes: any);
