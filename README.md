@@ -64,6 +64,7 @@ const options = {
   timeout: 1000,                    // [optional = 1000] number of milliseconds before forceful exiting
   signal,                           // [optional = 'SIGTERM'] what signal to listen for relative to shutdown
   signals,                          // [optional = []] array of signals to listen for relative to shutdown
+  useExit0,                         // [optional = false] instead of sending the received signal again without beeing catched, the process will exit(0)
   sendFailuresDuringShutdown,       // [optional = true] whether or not to send failure (503) during shutdown
   beforeShutdown,                   // [optional] called before the HTTP server starts its shutdown
   onSignal,                         // [optional] cleanup function, returning a promise (used to be onSigterm)
@@ -183,13 +184,18 @@ server.listen(PORT || 3000);
 
 When Kubernetes or a user deletes a Pod, Kubernetes will notify it and wait for `gracePeriod` seconds before killing it.
 
-During that time window (30 seconds by default), the Pod is in the `terminating` state and will be removed from any Services by a controller. The Pod itself needs to catch the `SIGTERM` signal and start failing any readiness probes.
+During that time window (30 seconds by default), the Pod is in the `terminating` state and will be removed from any Services by a controller.
+The Pod itself needs to catch the `SIGTERM` signal and start failing any readiness probes.
 
 > If the ingress controller you use route via the Service, it is not an issue for your case. At the time of this writing, we use the nginx ingress controller which routes traffic directly to the Pods.
 
 During this time, it is possible that load-balancers (like the nginx ingress controller) don't remove the Pods "in time", and when the Pod dies, it kills live connections.
 
-To make sure you don't lose any connections, we recommend delaying the shutdown with the number of milliseconds that's defined by the readiness probe in your deployment configuration. To help with this, terminus exposes an option called `beforeShutdown` that takes any Promise-returning function.
+To make sure you don't lose any connections, we recommend delaying the shutdown with the number of milliseconds that's defined by the readiness probe in your deployment configuration.
+To help with this, terminus exposes an option called `beforeShutdown` that takes any Promise-returning function.
+
+Also it makes sense to use the `useExit0 = true` option to signal Kubernetes that the container exited gracefully.
+Otherwise APM's will send you alerts, in some cases.
 
 ```javascript
 function beforeShutdown () {
@@ -201,7 +207,8 @@ function beforeShutdown () {
   })
 }
 createTerminus(server, {
-  beforeShutdown
+  beforeShutdown,
+  useExit0: true
 })
 ```
 
