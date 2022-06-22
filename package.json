@@ -31,7 +31,7 @@
     "node-fetch": "^2.0.0",
     "nyc": "^15.0.0",
     "pre-commit": "^1.2.2",
-    "semantic-release": "^17.4.2",
+    "semantic-release": "^19.0.3",
     "standard": "^16.0.3",
     "supertest": "^4.0.0",
     "typescript": "^3.9.9"
