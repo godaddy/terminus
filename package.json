@@ -16,7 +16,10 @@
     "url": "https://github.com/godaddy/terminus.git"
   },
   "keywords": [],
-  "author": "",
+  "author": {
+    "name": "Gergely Nemeth",
+    "url": "https://nemethgergely.com"
+  },
   "license": "MIT",
   "dependencies": {
     "stoppable": "^1.1.0"
