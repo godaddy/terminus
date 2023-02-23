@@ -11,6 +11,15 @@
     "coverage": "nyc mocha index.spec.js lib/**/*.spec.js",
     "semantic-release": "semantic-release"
   },
+  "files": [
+    "lib",
+    "typings",
+    "index.js",
+    "LICENSE",
+    "README",
+    "package.json",
+    "package-lock.json"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/godaddy/terminus.git"
