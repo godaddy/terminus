@@ -1,5 +1,5 @@
 {
-  "name": "oracle",
+  "name": "oracle-example",
   "version": "1.0.0",
   "description": "Oracle example",
   "main": "index.js",

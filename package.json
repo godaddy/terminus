@@ -11,12 +11,24 @@
     "coverage": "nyc mocha index.spec.js lib/**/*.spec.js",
     "semantic-release": "semantic-release"
   },
+  "files": [
+    "lib",
+    "typings",
+    "index.js",
+    "LICENSE",
+    "README",
+    "package.json",
+    "package-lock.json"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/godaddy/terminus.git"
   },
   "keywords": [],
-  "author": "",
+  "author": {
+    "name": "Gergely Nemeth",
+    "url": "https://nemethgergely.com"
+  },
   "license": "MIT",
   "dependencies": {
     "stoppable": "^1.1.0"
@@ -27,13 +39,12 @@
     "@types/node": "^12.0.0",
     "chai": "^4.1.2",
     "express": "^4.16.2",
-    "mocha": "^8.2.1",
-    "node-fetch": "^2.0.0",
+    "mocha": "^10.0.0",
+    "node-fetch": "^2.6.7",
     "nyc": "^15.0.0",
     "pre-commit": "^1.2.2",
-    "semantic-release": "^17.4.2",
-    "standard": "^16.0.3",
-    "supertest": "^4.0.0",
+    "semantic-release": "^19.0.5",
+    "standard": "^17.0.0",
     "typescript": "^3.9.9"
   },
   "pre-commit": [

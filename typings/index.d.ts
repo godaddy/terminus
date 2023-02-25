@@ -1,5 +1,9 @@
 declare module "@godaddy/terminus" {
-  export type HealthCheck = () => Promise<any>;
+  export interface TerminusState {
+    isShuttingDown: boolean;
+  }
+
+  export type HealthCheck = ({ state }: { state: TerminusState }) => Promise<any>;
 
   export class HealthCheckError extends Error {
     constructor(message: string, causes: any);
@@ -23,11 +27,13 @@ declare module "@godaddy/terminus" {
     statusOkResponse?: Record<string, unknown>,
     statusError?: number,
     statusErrorResponse?: Record<string, unknown>,
+    useExit0?: boolean,
     onSignal?: () => Promise<any>;
     onSendFailureDuringShutdown?: () => Promise<any>;
     onShutdown?: () => Promise<any>;
     beforeShutdown?: () => Promise<any>;
     logger?: (msg: string, err: Error) => void;
+    headers?:{ [key: string]: string };
 
     /** Deprecated. */
     onSigterm?: () => Promise<any>;
