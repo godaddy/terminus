@@ -180,6 +180,13 @@ createTerminus(server, options);
 server.listen(PORT || 3000);
 ```
 
+### With cluster (and eg. express)
+
+If you want to use (`cluster`)[https://nodejs.org/api/cluster.html] to use more than one CPU, you need to use `terminus` per worker.
+This is heavily inspired by https://medium.com/@gaurav.lahoti/graceful-shutdown-of-node-js-workers-dd58bbff9e30.
+
+See `example/express.cluster.js`.
+
 ## How to set Terminus up with Kubernetes?
 
 When Kubernetes or a user deletes a Pod, Kubernetes will notify it and wait for `gracePeriod` seconds before killing it.
