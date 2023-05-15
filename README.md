@@ -1,6 +1,6 @@
 # terminus
 
-[![Join Slack](https://img.shields.io/badge/Join%20us%20on-Slack-e01563.svg)](https://godaddy-oss-slack.herokuapp.com/)
+[![Join Slack](https://img.shields.io/badge/Join%20us%20on-Slack-e01563.svg)](https://godaddy-oss.slack.com/)
 [![Build Status](https://github.com/godaddy/terminus/actions/workflows/cicd.yml/badge.svg)](https://github.com/godaddy/terminus/actions/workflows/cicd.yml/badge.svg)
 
 Adds graceful shutdown and Kubernetes readiness / liveness checks for any HTTP applications.
