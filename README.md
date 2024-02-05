@@ -146,6 +146,7 @@ server.listen(3000);
 ```javascript
 const http = require('http');
 const express = require('express');
+const { createTerminus } = require('@godaddy/terminus');
 const app = express();
 
 app.get('/', (req, res) => {
@@ -168,6 +169,7 @@ server.listen(PORT || 3000);
 ```javascript
 const http = require('http');
 const Koa = require('koa');
+const { createTerminus } = require('@godaddy/terminus');
 const app = new Koa();
 
 const server = http.createServer(app.callback());
