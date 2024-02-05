@@ -40,7 +40,7 @@
     "chai": "^4.1.2",
     "express": "^4.16.2",
     "mocha": "^10.0.0",
-    "node-fetch": "^2.6.7",
+    "node-fetch": "^3.3.2",
     "nyc": "^15.0.0",
     "pre-commit": "^1.2.2",
     "semantic-release": "^19.0.5",
