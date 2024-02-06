@@ -81,6 +81,30 @@ createTerminus(server, options);
 server.listen(PORT || 3000);
 ```
 
+Upon receiving the signal, Terminus will:
+
+1. Set the state to shutting down.
+   You can use it to start failing readiness probe.
+2. Execute and wait for `beforeShutdown`.
+   Here you can log the fact that shutdown has started.
+   You can also delay here shutting down HTTP server, so that the service is taken out from load balancer first.
+3. Stop HTTP server and wait for its complete shutdown.
+   The server will immediately stop accepting new connections.
+   All existing idle connections get terminated with sending a `FIN` packet.
+   Terminus will wait for `timeout` for in-flight requests to complete, after which the remaining requests will be shut down with a `FIN` packet.
+4. Execute and wait for `onSignal`.
+   By now there are no more in-flight requests and you can clean up your resources.
+   For example, shut down your database connections.
+5. Execute and wait for `onShutdown`.
+   Here you can log successful shutdown and flush your logs.
+6. Exit with code `0` or kill the process, depending on `useExit0` setting.
+
+If any of the steps above throws, Terminus will log it and exit the process with code `1`.
+
+With `healthChecks` you can register multiple health checks, so you can have a separate liveness and readiness probe implementations.
+
+Note, that when `sendFailuredDuringShutdown` is set to `true` (default) and Terminus enters shutting down state, it will return failure without calling provided health check implementation.
+
 ### With custom error messages
 
 ```js
