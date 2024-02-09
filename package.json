@@ -43,7 +43,7 @@
     "node-fetch": "^2.6.7",
     "nyc": "^15.0.0",
     "pre-commit": "^1.2.2",
-    "semantic-release": "^19.0.5",
+    "semantic-release": "^21.0.1",
     "standard": "^17.0.0",
     "typescript": "^3.9.9"
   },
