@@ -8,9 +8,13 @@ async function onSignal() {
   ]);
 }
 
-async function onShutdown() {
+async function onShutdownAsync() {
   console.log('cleanup finished, server is shutting down');
-  return Promise.resolve();
+  return true;
+}
+
+const onShutdown: TerminusOptions["onShutdown"] = () => {
+  console.log('cleanup finished, server is shutting down');
 }
 
 const server = http.createServer((request, response) => {
@@ -23,14 +27,25 @@ const healthcheck: HealthCheck = () => {
   throw error;
 }
 
+const healthcheckAsync: HealthCheck = async () => {
+  const result = await Promise.resolve([{ status: 'up' }]);
+  return result;
+}
+
+const healthcheckSync: HealthCheck = () => {
+  return [{ status: 'up' }];
+}
+
 const options: TerminusOptions = {
   healthChecks: {
     "/healthcheck": healthcheck,
+    "/healthcheck-sync": healthcheckSync,
+    "/healthcheck-async": healthcheckAsync,
     verbatim: true
   },
   timeout: 1000,
   onSignal,
-  onShutdown,
+  onShutdown: onShutdownAsync,
   logger: console.log
 };
 
