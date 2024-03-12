@@ -3,7 +3,7 @@ declare module "@godaddy/terminus" {
     isShuttingDown: boolean;
   }
 
-  export type HealthCheck = ({ state }: { state: TerminusState }) => Promise<any>;
+  export type HealthCheck = ({ state }: { state: TerminusState }) => Promise<any> | any;
 
   export class HealthCheckError extends Error {
     constructor(message: string, causes: any);
@@ -28,10 +28,10 @@ declare module "@godaddy/terminus" {
     statusError?: number,
     statusErrorResponse?: Record<string, unknown>,
     useExit0?: boolean,
-    onSignal?: () => Promise<any>;
-    onSendFailureDuringShutdown?: () => Promise<any>;
-    onShutdown?: () => Promise<any>;
-    beforeShutdown?: () => Promise<any>;
+    onSignal?: () => Promise<any> | void;
+    onSendFailureDuringShutdown?: () => Promise<any> | void;
+    onShutdown?: () => Promise<any> | void;
+    beforeShutdown?: () => Promise<any> | void;
     logger?: (msg: string, err: Error) => void;
     headers?:{ [key: string]: string };
 
