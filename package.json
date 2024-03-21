@@ -45,7 +45,7 @@
     "pre-commit": "^1.2.2",
     "semantic-release": "^19.0.5",
     "standard": "^17.0.0",
-    "typescript": "^3.9.9"
+    "typescript": "^5.4.3"
   },
   "pre-commit": [
     "lint",
