@@ -1,8 +1,9 @@
 import * as http from "http";
 import { createTerminus, HealthCheckError, HealthCheck, TerminusOptions } from "@godaddy/terminus";
 
-async function onSignal() {
-  console.log('server is starting cleanup');
+async function onSignal(signal: string) {
+  console.log(`[${signal}]: server is starting cleanup`);
+  
   return Promise.all([
     // your clean logic, like closing database connections
   ]);

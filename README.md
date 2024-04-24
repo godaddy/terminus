@@ -18,8 +18,8 @@ npm i @godaddy/terminus --save
 const http = require('http');
 const { createTerminus } = require('@godaddy/terminus');
 
-function onSignal () {
-  console.log('server is starting cleanup');
+function onSignal (signal) {
+  console.log(`[${signal}]: server is starting cleanup`);
   return Promise.all([
     // your clean logic, like closing database connections
   ]);
