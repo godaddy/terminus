@@ -52,7 +52,7 @@ const optionsWithSignalParam: TerminusOptions = {
 
 const serverWithSignalParam = http.createServer((request, response) => {
   response.end('<html><body><h1>Hello, World!</h1></body></html>');
-})
+});
 
 createTerminus(serverWithSignalParam, optionsWithSignalParam);
 
