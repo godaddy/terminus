@@ -37,3 +37,23 @@ const options: TerminusOptions = {
 createTerminus(server, options);
 
 server.listen(3000);
+
+// Test new signal parameter feature
+async function onSignalWithParam(signal?: string) {
+  console.log('server is starting cleanup for signal:', signal);
+  return Promise.resolve();
+}
+
+const optionsWithSignalParam: TerminusOptions = {
+  onSignal: onSignalWithParam,
+  onShutdown,
+  logger: console.log
+};
+
+const serverWithSignalParam = http.createServer((request, response) => {
+  response.end('<html><body><h1>Hello, World!</h1></body></html>');
+})
+
+createTerminus(serverWithSignalParam, optionsWithSignalParam);
+
+serverWithSignalParam.listen(3001);
