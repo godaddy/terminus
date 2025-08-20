@@ -18,8 +18,9 @@ npm i @godaddy/terminus --save
 const http = require('http');
 const { createTerminus } = require('@godaddy/terminus');
 
-function onSignal () {
+function onSignal (signal) {
   console.log('server is starting cleanup');
+  console.log('received signal:', signal);
   return Promise.all([
     // your clean logic, like closing database connections
   ]);
@@ -68,7 +69,7 @@ const options = {
   useExit0,                         // [optional = false] instead of sending the received signal again without beeing catched, the process will exit(0)
   sendFailuresDuringShutdown,       // [optional = true] whether or not to send failure (503) during shutdown
   beforeShutdown,                   // [optional] called before the HTTP server starts its shutdown
-  onSignal,                         // [optional] cleanup function, returning a promise (used to be onSigterm)
+  onSignal,                         // [optional] cleanup function, returning a promise (used to be onSigterm). Receives signal as parameter.
   onShutdown,                       // [optional] called right before exiting
   onSendFailureDuringShutdown,      // [optional] called before sending each 503 during shutdowns
 
